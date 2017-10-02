@@ -2,16 +2,17 @@ import axios from 'axios';
 
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const CREATE_POSTS = 'CREATE_POSTS';
+export const FETCH_POST = 'FETCH_POST';
 
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 
 const API_KEY = '?key=rafakey1234qwer';
 
-const FINAL_URL = `${ROOT_URL}/posts${API_KEY}`;
+const KEY_URL = `${ROOT_URL}/posts${API_KEY}`;
 
 export function fetchPosts (){
     
-    const request = axios.get(FINAL_URL);
+    const request = axios.get(KEY_URL);
     
     return {
         type: FETCH_POSTS,
@@ -22,10 +23,22 @@ export function fetchPosts (){
 
 export function createPost(props) {
     
-    const request = axios.post(FINAL_URL, props);
+    const request = axios.post(KEY_URL, props);
     
     return {
         type: CREATE_POSTS,
+        payload: request
+    };
+
+};
+
+
+export function fetchPost(id) {
+    
+    const request = axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`);
+    
+    return {
+        type: FETCH_POST,
         payload: request
     };
 
