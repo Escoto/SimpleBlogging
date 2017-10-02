@@ -10,9 +10,30 @@ class PostsShow extends Component {
     }
 
     render(){
-        return(<div>Post {this.props.params.id}</div>);
+
+        const {post} = this.props;
+
+        if(!post){
+            return <div>Loading...</div>
+        }
+
+        return (
+        <div>
+            <div className="text-xs-right">
+                <Link to="/" className="btn btn-primary">
+                    Back
+                </Link>
+            </div>
+            <h3>{post.title}</h3>
+            <h6>Categories: {post.categories}</h6>
+            <p>{post.content}</p>
+        
+        </div>);
     }
 }
 
+function mapStateToProps(state){
+    return {post:state.posts.post};
+}
 
-export default connect(null, {fetchPost})(PostsShow);
+export default connect(mapStateToProps, {fetchPost})(PostsShow);
