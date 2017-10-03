@@ -3,7 +3,7 @@ import React, {  Component, PropTypes } from 'react';
 import {reduxForm} from 'redux-form';
 import {createPost} from '../actions/index';
 import {Link} from 'react-router';
-import {POSTS_NEW_FIELDS as FIELDS} from '../forms/field_configurations';
+import {POSTS_NEW_FIELDS as FIELDS} from '../forms/posts_new_fields';
 
 class PostsNew extends Component {
     
